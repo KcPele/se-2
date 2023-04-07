@@ -57,7 +57,7 @@ const CampaignDetails: React.FC = props => {
   const remainingDays = state.deadline ? daysLeft(state.deadline) : 0;
 
   const fetchDonators = async () => {
-    const data = await getDonations(state.pId);
+    const data = await getDonations(id);
 
     setDonators(data);
   };
