@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
+import { StateContextProvider } from "../context";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
 import { WagmiConfig } from "wagmi";
-import { Footer } from "~~/components/Footer";
-import { Header } from "~~/components/Header";
+import { Navbar, Sidebar } from "~~/components";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useEthPrice } from "~~/hooks/scaffold-eth";
 import { useAppStore } from "~~/services/store/store";
@@ -28,14 +28,19 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
     <WagmiConfig client={wagmiClient}>
       <NextNProgress />
       <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="relative flex flex-col flex-1">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
+        <StateContextProvider>
+          <div className="relative sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row">
+            <div className="sm:flex hidden mr-10 relative">
+              <Sidebar />
+            </div>
+
+            <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
+              <Navbar />
+              <Component {...pageProps} />
+            </div>
+          </div>
+          <Toaster />
+        </StateContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

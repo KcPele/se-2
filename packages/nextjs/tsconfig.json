@@ -18,6 +18,13 @@
       "~~/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "assets/index.js",
+    "context/index.jsx",
+    "pages/campaigndetails/[id].tsx"
+  ],
   "exclude": ["node_modules"]
 }
