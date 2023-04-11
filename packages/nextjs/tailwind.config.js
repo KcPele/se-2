@@ -91,6 +91,7 @@ module.exports = {
     // Extend Tailwind classes (e.g. font-bai-jamjuree, animate-grow)
     extend: {
       fontFamily: {
+        epilogue: ["Epilogue", "sans-serif"],
         "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
       },
       keyframes: {
@@ -101,6 +102,9 @@ module.exports = {
           "100%": {
             width: "100%",
           },
+        },
+        boxShadow: {
+          secondary: "10px 10px 20px rgba(2, 2, 2, 0.25)",
         },
         zoom: {
           "0%, 100%": { transform: "scale(1, 1)" },
